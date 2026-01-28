@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Smart Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="title-icon">✦</span>
+                    TaskFlow
+                </h1>
+                <p class="app-subtitle">Your mindful productivity companion</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon help-btn" id="helpBtn" aria-label="Help">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-label">Total</span>
+                <span class="stat-value" id="totalTasks">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Active</span>
+                <span class="stat-value" id="activeTasks">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Completed</span>
+                <span class="stat-value" id="completedTasks">0</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Task Input Section -->
+            <section class="task-input-section">
+                <button class="btn-add-task" id="addTaskBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    <span>Add New Task</span>
+                </button>
+            </section>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Tasks</button>
+                <button class="filter-tab" data-filter="active">Active</button>
+                <button class="filter-tab" data-filter="completed">Completed</button>
+            </div>
+
+            <!-- Tasks List -->
+            <section class="tasks-section">
+                <div class="tasks-list" id="tasksList">
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                        </svg>
+                        <h3>No tasks yet</h3>
+                        <p>Start your productive journey by adding your first task</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="btn-secondary" id="clearCompletedBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    </svg>
+                    Clear Completed
+                </button>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Built with focus & intention • SyntecxHub Internship Project</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Add/Edit Task (Project 3) -->
+    <div class="modal-overlay" id="taskModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add New Task</h2>
+                <button class="btn-close" id="closeModalBtn" aria-label="Close modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <form class="modal-form" id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title *</label>
+                    <input 
+                        type="text" 
+                        id="taskTitle" 
+                        class="form-input" 
+                        placeholder="What needs to be done?"
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description (Optional)</label>
+                    <textarea 
+                        id="taskDescription" 
+                        class="form-input form-textarea" 
+                        rows="3"
+                        placeholder="Add more details about this task..."
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority" class="form-input">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-primary" id="submitBtn">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Help Modal (Project 2 - FAQ Accordion) -->
+    <div class="modal-overlay" id="helpModal">
+        <div class="modal-container help-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">How to Use TaskFlow</h2>
+                <button class="btn-close" id="closeHelpBtn" aria-label="Close help">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="accordion" id="helpAccordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" data-accordion-target="faq1">
+                        <span>How do I add a task?</span>
+                        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="faq1">
+                        <p>Click the <strong>"Add New Task"</strong> button at the top of the page. Fill in the task title (required), add an optional description, choose a priority level, and click "Add Task". Your task will appear in the list immediately.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" data-accordion-target="faq2">
+                        <span>How do I mark a task as complete?</span>
+                        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="faq2">
+                        <p>Click the checkbox icon on the left side of any task. The task will be marked as completed with a strikethrough style. Click it again to mark it as active.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" data-accordion-target="faq3">
+                        <span>Can I edit tasks after creating them?</span>
+                        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="faq3">
+                        <p>Yes! Click the edit icon (pencil) on any task to open the edit modal. You can update the title, description, and priority level, then save your changes.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" data-accordion-target="faq4">
+                        <span>How do I delete a task?</span>
+                        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="faq4">
+                        <p>Click the trash icon on the right side of any task. A confirmation will appear to prevent accidental deletions. Confirm to permanently remove the task.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" data-accordion-target="faq5">
+                        <span>Are my tasks saved?</span>
+                        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="faq5">
+                        <p>Yes! All your tasks are automatically saved to your browser's local storage. They'll be there when you return, even after closing the browser. Note: Clearing browser data will remove your tasks.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" data-accordion-target="faq6">
+                        <span>What do the priority levels mean?</span>
+                        <svg class="accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content" id="faq6">
+                        <p><strong>High:</strong> Urgent tasks that need immediate attention (red indicator)<br>
+                        <strong>Medium:</strong> Important but not urgent (orange indicator)<br>
+                        <strong>Low:</strong> Tasks you can do when you have time (green indicator)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
