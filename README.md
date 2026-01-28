@@ -2,7 +2,6 @@
 
 ![TaskFlow](https://img.shields.io/badge/Project-TaskFlow-e07a5f)
 ![Status](https://img.shields.io/badge/Status-Complete-2a9d8f)
-![License](https://img.shields.io/badge/License-MIT-blue)
 
 A beautiful, feature-rich task management web application built with vanilla HTML, CSS, and JavaScript. Created as part of the SyntecxHub Frontend Development Internship.
 
