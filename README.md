@@ -50,109 +50,13 @@ A beautiful, feature-rich task management web application built with vanilla HTM
 - **Animations**: Smooth, purposeful micro-interactions
 - **Layout**: Generous spacing with clear visual hierarchy
 
-## 📁 Project Structure
-
-```
-taskflow/
-│
-├── index.html          # Main HTML structure
-├── style.css           # Complete styling with CSS variables
-├── script.js           # All JavaScript functionality
-└── README.md           # This file
-```
-
-## 🚀 Getting Started
-
-### Installation
-
-1. **Download the files**
-   - Download all three files: `index.html`, `style.css`, `script.js`
-
-2. **Open in browser**
-   ```bash
-   # Simply open index.html in any modern browser
-   # Or use a local server (recommended):
-   
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js (http-server)
-   npx http-server
-   ```
-
-3. **Start using!**
-   - No build process, no dependencies, just open and use
-
-## 💡 How to Use
-
-### Adding a Task
-1. Click the **"Add New Task"** button
-2. Enter your task title (required)
-3. Optionally add a description and set priority
-4. Click **"Add Task"**
-
-### Completing a Task
-- Click the checkbox icon on the left of any task
-- Task will get a strikethrough and move to completed state
-
-### Editing a Task
-1. Click the pencil (edit) icon on the task
-2. Update the details in the modal
-3. Click **"Save Changes"**
-
-### Deleting a Task
-- Click the trash icon on the task
-- Confirm the deletion
-
-### Filtering Tasks
-- Use the **All Tasks**, **Active**, or **Completed** tabs to filter your view
-
-### Keyboard Shortcuts
-- `Ctrl/Cmd + N` - Add new task
-- `Esc` - Close any open modal
-
-## 🎯 Project Integration
-
-This project successfully integrates all three assigned projects:
-
-| Project | Integration |
-|---------|------------|
-| **Project 1** - To-Do List | Core functionality - all CRUD operations, localStorage |
-| **Project 2** - FAQ Accordion | Help modal with collapsible FAQ sections |
-| **Project 3** - Modal/Popup | Task add/edit modal system with overlay |
-
-## 🧠 Code Architecture
-
-### State Management
-```javascript
-let tasks = [];              // Main data store
-let currentFilter = 'all';   // Current filter state
-let editingTaskId = null;    // Track editing mode
-```
-
-### Module Pattern
-- `storage` - localStorage operations
-- `taskManager` - Task CRUD operations
-- `ui` - DOM rendering and updates
-- `modal` - Modal show/hide logic
-- `accordion` - FAQ accordion functionality
-- `events` - Event listener management
-
-### Key Functions
-- `taskManager.add()` - Create new task
-- `taskManager.update()` - Update existing task
-- `taskManager.delete()` - Remove task
-- `taskManager.toggle()` - Toggle completion
-- `ui.render()` - Re-render task list
-- `storage.save()` - Persist to localStorage
-
 ## 📊 Statistics Tracking
 
 The app automatically tracks:
 - **Total Tasks** - All tasks combined
 - **Active Tasks** - Incomplete tasks
 - **Completed Tasks** - Finished tasks
-
+- 
 ## 🔒 Data Persistence
 
 All tasks are saved to browser's localStorage:
@@ -179,15 +83,6 @@ Fully responsive breakpoints:
 - **Tablet**: Adjusted spacing and sizing
 - **Mobile**: Single column layout, stacked elements
 
-## 🎨 Color Palette
-
-```css
-Primary: #e07a5f    (Terracotta)
-Secondary: #f4a261  (Orange)
-Accent: #e9c46a     (Yellow)
-Success: #2a9d8f    (Teal)
-Danger: #e76f51     (Red)
-```
 
 ## 🚧 Future Enhancements
 
@@ -202,49 +97,11 @@ Potential additions for v2.0:
 - [ ] User authentication
 - [ ] Cloud sync across devices
 
-## 🐛 Known Limitations
-
-- localStorage has ~5-10MB limit (enough for thousands of tasks)
-- Data not synced across devices
-- No collaboration features
-- Single user only
-
-## 📝 Learning Outcomes
-
-This project demonstrates proficiency in:
-
-✅ **JavaScript Fundamentals**
-- DOM manipulation
-- Event handling (delegation)
-- ES6+ features (arrow functions, destructuring, template literals)
-- Array methods (map, filter, find)
-- Error handling
-
-✅ **CSS Skills**
-- CSS Custom Properties (variables)
-- Flexbox & Grid layouts
-- CSS animations & transitions
-- Responsive design
-- Component-based styling
-
-✅ **Software Engineering**
-- Code organization & modularity
-- State management patterns
-- Data persistence
-- Error handling
-- User experience considerations
-
-✅ **Problem Solving**
-- Feature integration
-- UI/UX design decisions
-- Performance optimization
-- Cross-browser compatibility
-
 ## 👤 Author
 
-**Your Name**
+**Hardik Hardik**
 - SyntecxHub Frontend Development Intern
-- MSc Computer Science Student
+- MSc Computer Science graduate
 
 ## 📄 License
 
@@ -260,4 +117,4 @@ This project is created for educational purposes as part of the SyntecxHub inter
 
 **Built with focus & intention** ✦
 
-*Need help? Click the help icon (?) in the top right corner of the app!*
+*Need help? Click the help icon (?) in the top right corner of the webpage!*
